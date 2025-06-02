@@ -1,4 +1,4 @@
-export const bfcApp = angular.module('bfcApp', ['ngRoute']);
+export const bfcApp = angular.module('bfcApp', ['ngRoute', 'hmTouchEvents']);
 
 bfcApp.config(function ($routeProvider) {
   // setup urls

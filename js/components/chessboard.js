@@ -6,15 +6,28 @@ export default () => {
     bindings: {
       'fen': '<',
       'winner': '<',
-      'size': '<' // size in pixels, default is 64
+      'size': '<', // size in pixels, default is 64
+      'onMove': '&', // callback for when a move is made
     },
     controller: [function () {
       this.squares = 'abcdefgh'.split('');
       this.ranks = '87654321'.split('');
 
       console.log('chessboard controller loaded');
+
+      this.onSquareTap = function ($event, coord) {
+        if (this.selectedPiece) {
+          this.onMove({ from: this.selectedPiece, to: coord });
+          this.selectedPiece = null; // reset selected piece after move
+        }
+      }
+
+      this.onPieceTap = function ($event, coord) {
+        console.log('piece tapped', coord);
+        this.selectedPiece = coord;
+      }
       
-      this.flip = () => {
+      this.flip = function () {
         console.log('flip');
         this.ranks.reverse();
         this.squares.reverse();

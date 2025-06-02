@@ -1,7 +1,19 @@
 <h3>1rookvking</h3>
 
-<div style="width: calc(64 * 8px); height: calc(64 * 8px); background-color: gray;" ng-if="childCtrl.blindfolded">
-</div>
-<chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded"></chessboard>
+<!-- set starting position to 1 rook vs king -->
+<div ng-init="childCtrl.createNewGame('8/8/8/8/8/4K3/2R5/4k3 w - - 0 1', 'black');">
 
-<pre>childCtrl.pgn:{{childCtrl.pgn}}</pre>
+  {{childCtrl.fen}}
+<br>
+  {{childCtrl.playingAs}}/
+  {{childCtrl.currentlyPlaying}}
+
+  <div style="width: calc(64 * 8px); height: calc(64 * 8px); background-color: gray;" ng-if="childCtrl.blindfolded">
+  </div>
+  <chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded" on-move="childCtrl.moveTo(from, to)"></chessboard>
+
+  <pre>{{childCtrl.ascii}}</pre>
+
+  <pre>childCtrl.pgn:{{childCtrl.pgn}}</pre>
+
+</div>

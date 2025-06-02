@@ -1,13 +1,14 @@
+winner:{{$ctrl.winner}}
+
 <div class="chessboard" ng-style="{'font-size': ($ctrl.size||64) / 3 }">
   <div ng-repeat="rank in $ctrl.ranks" class="rank">
-    <div ng-repeat="square in $ctrl.squares" class="square" ng-class="{'dark' : $ctrl.isDark(square + rank)}"
-      ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}">
+    <div ng-repeat="square in $ctrl.squares" class="square" ng-class="{'dark' : $ctrl.isDark(square + rank), 'selected': $ctrl.selectedPiece == square + rank}"
+      ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}" hm-tap="$ctrl.onSquareTap($event, square + rank)">
       <!-- {{square + rank}}:
       <br> -->
-
       <!-- [{{$ctrl.pieces[square + rank] ? $ctrl.pieces[square + rank] : ' '}}] -->
       <div class="piece {{$ctrl.fenToClassName($ctrl.pieces[square + rank])}}" ng-if="$ctrl.pieces[square + rank]"
-        ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}">
+        ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}" hm-tap="$ctrl.onPieceTap($event, square + rank)">
         <span class="piece-{{ $ctrl.board[square + rank].color }}-{{ $ctrl.board[square + rank].type }}"></span>
       </div>
 
@@ -18,12 +19,12 @@
         {{square}}
       </div>
       <div class="square-label square-label-tr square-label-result square-label-loss"
-        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'black') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'black')">
+        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'white') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'black')">
         <!-- white flag -->
         &#x2691;
       </div>
       <div class="square-label square-label-tr square-label-result square-label-win"
-        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'white') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'white')">
+        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'black') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'white')">
         <!-- crown -->
         &#x1F451;
       </div>
