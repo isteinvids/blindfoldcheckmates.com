@@ -15,7 +15,7 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
     if (!chess.game_over()) {
       $timeout(() => {
         this.doRandomChessMove()
-      }, 1000);
+      }, 100);
     }
 
     this.pgn = chess.pgn();
