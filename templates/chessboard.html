@@ -1,0 +1,28 @@
+<div class="chessboard" ng-style="{'font-size': ($ctrl.size||64) / 3 }">
+  <div ng-repeat="rank in $ctrl.ranks" class="rank">
+    <div ng-repeat="square in $ctrl.squares" class="square" ng-class="{'dark' : $ctrl.isDark(square + rank)}"
+      ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}">
+      <!-- {{square + rank}}:
+      <br> -->
+
+      <!-- [{{$ctrl.pieces[square + rank] ? $ctrl.pieces[square + rank] : ' '}}] -->
+      <div class="piece {{$ctrl.fenToClassName($ctrl.pieces[square + rank])}}" ng-if="$ctrl.pieces[square + rank]"
+        ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}">
+        <span class="piece-{{ $ctrl.board[square + rank].color }}-{{ $ctrl.board[square + rank].type }}"></span>
+      </div>
+
+      <div class="square-label square-label-tl" ng-if="square == $ctrl.squares[0]">
+        {{rank}}
+      </div>
+      <div class="square-label square-label-br" ng-if="rank == $ctrl.ranks[7]">
+        {{square}}
+      </div>
+    </div>
+  </div>
+  <div class="piece knight-w"></div>
+  <div class="piece knight-b"></div>
+</div>
+
+<pre>$ctrl.fen:{{$ctrl.fen | json}}</pre>
+
+<div class="button" ng-click="$ctrl.flip()">flip</div>
