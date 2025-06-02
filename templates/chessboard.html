@@ -17,6 +17,21 @@
       <div class="square-label square-label-br" ng-if="rank == $ctrl.ranks[7]">
         {{square}}
       </div>
+      <div class="square-label square-label-tr square-label-result square-label-loss"
+        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'black') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'black')">
+        <!-- white flag -->
+        &#x2691;
+      </div>
+      <div class="square-label square-label-tr square-label-result square-label-win"
+        ng-if="($ctrl.pieces[square + rank] == 'k' && $ctrl.winner == 'white') || ($ctrl.pieces[square + rank] == 'K' && $ctrl.winner == 'white')">
+        <!-- crown -->
+        &#x1F451;
+      </div>
+      <div class="square-label square-label-tr square-label-result square-label-draw"
+        ng-if="$ctrl.winner == 'draw' && ($ctrl.pieces[square + rank] == 'k' || $ctrl.pieces[square + rank] == 'K')">
+        <!-- .5 -->
+        &#x00BD;
+      </div>
     </div>
   </div>
   <div class="piece knight-w"></div>
@@ -24,5 +39,7 @@
 </div>
 
 <pre>$ctrl.fen:{{$ctrl.fen | json}}</pre>
+
+winner:{{$ctrl.winner}}
 
 <div class="button" ng-click="$ctrl.flip()">flip</div>

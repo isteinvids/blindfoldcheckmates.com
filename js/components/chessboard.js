@@ -5,6 +5,7 @@ export default () => {
     controllerAs: '$ctrl',
     bindings: {
       'fen': '<',
+      'winner': '<',
       'size': '<' // size in pixels, default is 64
     },
     controller: [function () {

@@ -23,17 +23,51 @@
   top: 0;
   left: 0;
 }
+.chessboard .square .square-label-tr {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+}
 .chessboard .square .square-label-br {
   position: absolute;
   
   bottom: 0;
   right: 0;
 }
-.chessboard .square .square-label-br, .chessboard .square .square-label-tl {
+.chessboard .square .square-label {
   color: #b58863;
 }
-.chessboard .square.dark .square-label-br, .chessboard .square.dark .square-label-tl {
+.chessboard .square.dark .square-label {
   color: #f0d9b5;
+}
+
+.chessboard .square .square-label.square-label-result {
+  display: flex;
+  width: 55%;
+  height: 55%;
+
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 50%;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+
+  top: -10%;
+  right: -10%;
+  z-index: 10;
+}
+
+.square-label-win {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+.square-label-draw {
+  /* boring colour, like gray or something */
+  background-color: rgba(128, 128, 128, 0.5);
+}
+.square-label-loss {
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .chessboard .piece.pawn-w { background-image: url("../lib/pieces-basic-svg/pawn-w.svg"); }

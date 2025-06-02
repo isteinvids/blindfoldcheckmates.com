@@ -4,6 +4,7 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
 
   this.pgn = '';
   this.fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+  this.winner = null;
 
   const chess = new Chess()
 
@@ -12,7 +13,9 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
     const move = moves[Math.floor(Math.random() * moves.length)]
     chess.move(move);
 
-    if (!chess.game_over()) {
+    if (chess.game_over()) {
+      this.winner = chess.in_checkmate() ? (chess.turn() === 'w' ? 'black' : 'white') : 'draw';
+    } else {
       $timeout(() => {
         this.doRandomChessMove()
       }, 100);
