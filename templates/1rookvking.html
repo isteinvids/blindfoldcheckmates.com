@@ -13,26 +13,21 @@
   </div>
 
   <form ng-submit="childCtrl.moveTo(childCtrl.inputMove)" ng-if="!childCtrl.winner">
+    {{childCtrl.turn}} to play
     <input ng-model="childCtrl.inputMove" placeholder="e.g. a1a2" />
   </form>
 
   <h3 ng-if="childCtrl.winner">Winner: {{childCtrl.winner | uppercase}}</h3>
 
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <div style="margin-top:300px;"></div>
   <hr />
 
 
   <div style="width: calc(64 * 8px); height: calc(64 * 8px); background-color: gray;" ng-if="childCtrl.blindfolded">
   </div>
 
-  <chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded"
+  <chessboard fen="childCtrl.fen" size="32" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded"
     on-move="childCtrl.moveTo(from, to)"></chessboard>
 
+  <div style="margin-top:120%;"></div>
 </div>

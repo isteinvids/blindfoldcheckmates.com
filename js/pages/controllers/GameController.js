@@ -84,6 +84,7 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
     this.pgn = chess.pgn();
     this.fen = chess.fen();
     this.ascii = chess.ascii();
+    this.turn = chess.turn() === 'w' ? 'white' : 'black';
 
     const board = chess.board();
     // put the pieces in this.pieces, in the format of : {'a1': 'r', 'e4': 'P', ...}
