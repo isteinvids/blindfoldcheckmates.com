@@ -2,6 +2,8 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
   this.playingAs = 'white';
   this.currentlyPlaying = 'black';
 
+  this.blindfolded = true;
+
   this.pgn = '';
   this.fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
   this.winner = null;
@@ -11,6 +13,8 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
   this.doRandomChessMove = function () {
     const moves = chess.moves()
     const move = moves[Math.floor(Math.random() * moves.length)]
+    // {current player} moved {move}
+    console.log(`${chess.turn()} moved ${move}`);
     chess.move(move);
 
     if (chess.game_over()) {
@@ -18,11 +22,13 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
     } else {
       $timeout(() => {
         this.doRandomChessMove()
-      }, 100);
+      }, 1000);
     }
 
     this.pgn = chess.pgn();
     this.fen = chess.fen();
+
+    this.blindfolded = !this.blindfolded;
   }
 
   this.doRandomChessMove();

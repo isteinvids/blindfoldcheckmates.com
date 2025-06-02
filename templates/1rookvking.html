@@ -1,5 +1,7 @@
 <h3>1rookvking</h3>
 
-<chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner">chessboard</chessboard>
+<div style="width: calc(64 * 8px); height: calc(64 * 8px); background-color: gray;" ng-if="childCtrl.blindfolded">
+</div>
+<chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded"></chessboard>
 
 <pre>childCtrl.pgn:{{childCtrl.pgn}}</pre>
