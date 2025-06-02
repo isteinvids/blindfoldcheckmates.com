@@ -3,9 +3,6 @@
   width: fit-content;
 }
 
-.chessboard .piece {
-  background-size: cover;
-}
 .chessboard .square {
   position: relative;
   background-color: #f0d9b5;
@@ -74,19 +71,6 @@
 .square-label-loss {
   background-color: rgba(255, 0, 0, 0.5);
 }
-
-.piece.pawn-w { background-image: url("../lib/pieces-basic-svg/pawn-w.svg"); }
-.piece.pawn-b { background-image: url("../lib/pieces-basic-svg/pawn-b.svg"); }
-.piece.rook-w { background-image: url("../lib/pieces-basic-svg/rook-w.svg"); }
-.piece.rook-b { background-image: url("../lib/pieces-basic-svg/rook-b.svg"); }
-.piece.bishop-w { background-image: url("../lib/pieces-basic-svg/bishop-w.svg"); }
-.piece.bishop-b { background-image: url("../lib/pieces-basic-svg/bishop-b.svg"); }
-.piece.knight-w { background-image: url("../lib/pieces-basic-svg/knight-w.svg"); }
-.piece.knight-b { background-image: url("../lib/pieces-basic-svg/knight-b.svg"); }
-.piece.queen-w { background-image: url("../lib/pieces-basic-svg/queen-w.svg"); }
-.piece.queen-b { background-image: url("../lib/pieces-basic-svg/queen-b.svg"); }
-.piece.king-w { background-image: url("../lib/pieces-basic-svg/king-w.svg"); }
-.piece.king-b { background-image: url("../lib/pieces-basic-svg/king-b.svg"); }
 
 .rank {
   display: flex;

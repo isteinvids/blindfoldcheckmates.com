@@ -1,13 +1,11 @@
-winner:{{$ctrl.winner}}
-
 <div class="chessboard" ng-style="{'font-size': ($ctrl.size||64) / 3 }">
   <div ng-repeat="rank in $ctrl.ranks" class="rank">
-    <div ng-repeat="square in $ctrl.squares" class="square" ng-class="{'dark' : $ctrl.isDark(square + rank), 'selected': $ctrl.selectedPiece == square + rank}"
+    <div ng-repeat="square in $ctrl.squares" class="square" ng-class="{'dark' : $ctrl.chessUtils.isDark(square + rank), 'selected': $ctrl.selectedPiece == square + rank}"
       ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}" hm-tap="$ctrl.onSquareTap($event, square + rank)">
       <!-- {{square + rank}}:
       <br> -->
       <!-- [{{$ctrl.pieces[square + rank] ? $ctrl.pieces[square + rank] : ' '}}] -->
-      <div class="piece {{$ctrl.fenToClassName($ctrl.pieces[square + rank])}}" ng-if="$ctrl.pieces[square + rank]"
+      <div class="piece {{$ctrl.chessUtils.fenToClassName($ctrl.pieces[square + rank])}}" ng-if="$ctrl.pieces[square + rank]"
         ng-style="{width:$ctrl.size||64,height:$ctrl.size||64}" hm-tap="$ctrl.onPieceTap($event, square + rank)">
         <span class="piece-{{ $ctrl.board[square + rank].color }}-{{ $ctrl.board[square + rank].type }}"></span>
       </div>

@@ -1,4 +1,5 @@
 export const bfcApp = angular.module('bfcApp', ['ngRoute', 'hmTouchEvents']);
+import * as chessUtils from './chessUtils.js';
 
 bfcApp.config(function ($routeProvider) {
   // setup urls

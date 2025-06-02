@@ -3,17 +3,36 @@
 <!-- set starting position to 1 rook vs king -->
 <div ng-init="childCtrl.createNewGame('8/8/8/8/8/4K3/2R5/4k3 w - - 0 1', 'black');">
 
-  {{childCtrl.fen}}
-<br>
-  {{childCtrl.playingAs}}/
-  {{childCtrl.currentlyPlaying}}
+  <div class="pieces-container">
+    <div ng-repeat="(coord, piece) in childCtrl.pieces track by $index" class="piece-container"
+      ng-class="{'dark': childCtrl.chessUtils.isDark(coord)}">
+      <div class="piece-label">{{coord}}</div>
+      <div style="display: inline-block; width: 40px; height: 40px;" class="piece {{piece}}">
+      </div>
+    </div>
+  </div>
+
+  <form ng-submit="childCtrl.moveTo(childCtrl.inputMove)" ng-if="!childCtrl.winner">
+    <input ng-model="childCtrl.inputMove" placeholder="e.g. a1a2" />
+  </form>
+
+  <h3 ng-if="childCtrl.winner">Winner: {{childCtrl.winner | uppercase}}</h3>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <hr />
+
 
   <div style="width: calc(64 * 8px); height: calc(64 * 8px); background-color: gray;" ng-if="childCtrl.blindfolded">
   </div>
-  <chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded" on-move="childCtrl.moveTo(from, to)"></chessboard>
 
-  <pre>{{childCtrl.ascii}}</pre>
-
-  <pre>childCtrl.pgn:{{childCtrl.pgn}}</pre>
+  <chessboard fen="childCtrl.fen" size="64" winner="childCtrl.winner" ng-if="!childCtrl.blindfolded"
+    on-move="childCtrl.moveTo(from, to)"></chessboard>
 
 </div>

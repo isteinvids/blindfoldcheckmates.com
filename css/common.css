@@ -18,3 +18,53 @@ body {
 .button:hover {
   background-color: #45a049; /* Darker green */
 }
+
+.piece {
+  background-size: cover;
+}
+.piece.pawn-w { background-image: url("../lib/pieces-basic-svg/pawn-w.svg"); }
+.piece.pawn-b { background-image: url("../lib/pieces-basic-svg/pawn-b.svg"); }
+.piece.rook-w { background-image: url("../lib/pieces-basic-svg/rook-w.svg"); }
+.piece.rook-b { background-image: url("../lib/pieces-basic-svg/rook-b.svg"); }
+.piece.bishop-w { background-image: url("../lib/pieces-basic-svg/bishop-w.svg"); }
+.piece.bishop-b { background-image: url("../lib/pieces-basic-svg/bishop-b.svg"); }
+.piece.knight-w { background-image: url("../lib/pieces-basic-svg/knight-w.svg"); }
+.piece.knight-b { background-image: url("../lib/pieces-basic-svg/knight-b.svg"); }
+.piece.queen-w { background-image: url("../lib/pieces-basic-svg/queen-w.svg"); }
+.piece.queen-b { background-image: url("../lib/pieces-basic-svg/queen-b.svg"); }
+.piece.king-w { background-image: url("../lib/pieces-basic-svg/king-w.svg"); }
+.piece.king-b { background-image: url("../lib/pieces-basic-svg/king-b.svg"); }
+
+.pieces-container .piece-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px; /* Space between pieces */
+  padding: 5px;
+
+  border: 2px solid #b58863; /* Border around each piece */
+}
+.pieces-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 10px 0;
+
+  width: fit-content;
+
+  padding: 10px;
+  /* different colour than the squares */
+  background-color: #f0d9b5; /* Light background for pieces */
+}
+.piece-container.dark {
+  background-color: #b58863; /* Dark background for pieces */
+  border-color: #f0d9b5; /* Border color for dark pieces */
+}
+.pieces-container .piece-label {
+  width: 20px;
+  text-align: center;
+  color: #b58863; /* Light color for piece labels */
+}
+.pieces-container .dark .piece-label {
+  color: #f0d9b5; /* Dark color for piece labels */
+}
