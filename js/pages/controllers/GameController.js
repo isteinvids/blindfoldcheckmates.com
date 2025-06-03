@@ -1,6 +1,6 @@
 import * as chessUtils from '../../chessUtils.js';
 
-export default ['$location', '$scope', '$timeout', function ($location, $scope, $timeout) {
+export default ['$location', '$scope', '$timeout', '$route', function ($location, $scope, $timeout, $route) {
   this.playingAs = 'white';
   this.currentlyPlaying = 'black';
 
@@ -10,6 +10,8 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
   this.fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1';
   this.winner = null;
   this.chessUtils = chessUtils;
+
+  this.gameData = $route.current?.$$route?.gameData;
 
   let chess = new Chess();
 
@@ -61,8 +63,17 @@ export default ['$location', '$scope', '$timeout', function ($location, $scope, 
   }
 
   this.doRandomChessMove = function () {
-    const moves = chess.moves()
-    const move = moves[Math.floor(Math.random() * moves.length)]
+    const moves = chess.moves();
+    const captures = moves.filter(move => move.includes('x'));
+
+    let move = null;
+
+    if (captures.length > 0) {
+      // if we can capture, choose a random capture move
+      move = captures[Math.floor(Math.random() * captures.length)];
+    } else {
+      move = moves[Math.floor(Math.random() * moves.length)];
+    }
     // {current player} moved {move}
     console.log(`${chess.turn()} moved ${move}`);
     chess.move(move);

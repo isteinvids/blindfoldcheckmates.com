@@ -1,7 +1,7 @@
-<h3>1rookvking</h3>
+<h3>{{childCtrl.gameData.name}}</h3>
+<p>{{childCtrl.gameData.description}}</p>
 
-<!-- set starting position to 1 rook vs king -->
-<div ng-init="childCtrl.createNewGame('8/8/8/8/8/4K3/2R5/4k3 w - - 0 1');">
+<div ng-init="childCtrl.createNewGame(childCtrl.gameData.fen);">
 
   <div class="pieces-container">
     <div ng-repeat="(coord, piece) in childCtrl.pieces track by $index" class="piece-container"

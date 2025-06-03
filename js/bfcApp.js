@@ -1,20 +1,33 @@
 export const bfcApp = angular.module('bfcApp', ['ngRoute', 'hmTouchEvents']);
 import * as chessUtils from './chessUtils.js';
+import { examples } from './examples.js';
 
 bfcApp.config(function ($routeProvider) {
-  // setup urls
   $routeProvider.when("/", {
     templateUrl: "../templates/home.html",
     controller: "HomeController",
     controllerAs: "childCtrl"
   });
 
-  // runnigns
   $routeProvider.when("/1rookvking", {
     templateUrl: "../templates/1rookvking.html",
     controller: "GameController",
-    controllerAs: "childCtrl"
+    controllerAs: "childCtrl",
+    fen: "8/8/8/8/8/4K3/2R5/4k3 w - - 0 1"
   });
+
+  for (const key in examples) {
+    $routeProvider.when(`/${key}`, {
+      templateUrl: "../templates/game.html",
+      controller: "GameController",
+      controllerAs: "childCtrl",
+      gameData: {
+        fen: examples[key].fen,
+        name: examples[key].name,
+        description: examples[key].description
+      }
+    });
+  }
 
   // send to home if invalid url
   $routeProvider.otherwise({

@@ -1,8 +1,9 @@
 <h3>basic checkmates</h3>
 
 <!-- add ngroute link to /rooks -->
-<div class="button" ng-click="mainCtrl.goTo('/1rookvking')">
-  Rook v King
+<div class="examples-container">
+  <div class="example-button" ng-click="mainCtrl.goTo('/' + key)" ng-repeat="(key, example) in childCtrl.examples">
+    <div class="button name">{{example.name}}</div>
+    <div class="description">{{example.description}}</div>
+  </div>
 </div>
-
-bleep bloop bloop
